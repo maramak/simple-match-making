@@ -24,21 +24,10 @@ public class WaitingTimeComparator implements Comparator<Player> {
 
     @Override
     public int compare(Player p1, Player p2) {
-        int c = p1.getWaitingTime().compareTo(p2.getWaitingTime());
-        if (c == 0) {
-            c = p1.getUser().compareTo(p2.getUser());
-        }
-        return order == Order.ASC ? c : negate(c);
-    }
+        int c = order == Order.ASC ? p1.getWaitingTime().compareTo(p2.getWaitingTime())
+                : p2.getWaitingTime().compareTo(p1.getWaitingTime());
 
-    /**
-     * Negates incoming value.
-     *
-     * @param target Value to negate.
-     * @return Negated value.
-     */
-    private int negate(int target) {
-        return -target;
+        return c == 0 ? p1.getUser().compareTo(p2.getUser()) : c;
     }
 
     /**
