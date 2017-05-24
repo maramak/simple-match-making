@@ -1,5 +1,6 @@
 package com.mk.service;
 
+import com.mk.contract.Stoppable;
 import com.mk.entity.Player;
 import com.mk.util.CommonHelper;
 import com.mk.util.PlayerGenerator;
@@ -12,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author Pavel Fursov
  */
-public class PlayerProvider implements Runnable {
+public class PlayerProvider implements Runnable, Stoppable {
 
     private static final int PLAYERS_PER_PACK = 10;
 
