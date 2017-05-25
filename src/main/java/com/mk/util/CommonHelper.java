@@ -1,7 +1,7 @@
 package com.mk.util;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -11,16 +11,16 @@ import java.util.concurrent.TimeUnit;
  */
 public final class CommonHelper {
 
-    private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
 
     /**
-     * Converts time specified in milliseconds to human-readable format.
+     * Converts time to human-readable format.
      *
-     * @param millis Time in milliseconds.
+     * @param time Time object.
      * @return Formatted date string.
      */
-    public static String formatDate(long millis) {
-        return FORMATTER.format(new Date(millis));
+    public static String formatDate(TemporalAccessor time) {
+        return FORMATTER.format(time);
     }
 
     /**

@@ -2,6 +2,7 @@ package com.mk.service;
 
 import com.mk.entity.Player;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -38,7 +39,7 @@ public class PlayerRegistrar {
      * @param player {@code Player} to register in queue.
      */
     public void register(Player player) {
-        player.setEnterTime(System.currentTimeMillis());
+        player.setEnterTime(LocalDateTime.now());
         registeredPlayers.add(player);
     }
 

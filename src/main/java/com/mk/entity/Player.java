@@ -2,6 +2,8 @@ package com.mk.entity;
 
 import com.mk.util.CommonHelper;
 
+import java.time.LocalDateTime;
+
 /**
  * Class representing a player entity.
  *
@@ -11,7 +13,7 @@ public class Player {
 
     private final String user;
     private final Byte rank;
-    private Long enterTime;
+    private LocalDateTime enterTime;
     private Long waitingTime = 0L;
 
     /**
@@ -33,11 +35,11 @@ public class Player {
         return rank;
     }
 
-    public Long getEnterTime() {
+    public LocalDateTime getEnterTime() {
         return enterTime;
     }
 
-    public void setEnterTime(Long enterTime) {
+    public void setEnterTime(LocalDateTime enterTime) {
         this.enterTime = enterTime;
     }
 
@@ -69,7 +71,8 @@ public class Player {
 
     @Override
     public String toString() {
-        final String enterTimeStr = enterTime != null ? CommonHelper.formatDate(enterTime) : null;
+        final String enterTimeStr = enterTime != null ?
+                CommonHelper.formatDate(enterTime) : null;
         return "Player{" +
                 "user='" + user + '\'' +
                 ", rank=" + rank +

@@ -7,8 +7,9 @@ import com.mk.entity.Team;
 import com.mk.service.match.MatchMakingService;
 import com.mk.util.CommonHelper;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
@@ -47,7 +48,7 @@ public class MatchMaker implements Runnable, Stoppable {
                 cleanupRegistrar(teamPlayers);
 
                 System.out.printf("%s | Created match for %d players: %s %n",
-                        CommonHelper.formatDate(Calendar.getInstance().getTime().getTime()),
+                        CommonHelper.formatDate(LocalDateTime.now()),
                         teamPlayers == null ? 0 : teamPlayers.size(), teamPlayers);
             }
         }
@@ -98,7 +99,7 @@ public class MatchMaker implements Runnable, Stoppable {
      * @return Player with updated waiting time.
      */
     private Player updateWaitingTime(Player player) {
-        player.setWaitingTime(System.currentTimeMillis() - player.getEnterTime());
+        player.setWaitingTime(Duration.between(LocalDateTime.now(), player.getEnterTime()).toMillis());
         return player;
     }
 }
